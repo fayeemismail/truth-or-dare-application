@@ -79,7 +79,15 @@ const SpinnerWheel = ({ players, onSelectPlayer, onHome }) => {
   };
 
   const handleCardClick = () => {
-    if (!isShuffling && !selectedPlayer) {
+    // If shuffling, do nothing
+    if (isShuffling) return;
+    
+    // If we have a selected player, confirm the selection
+    if (selectedPlayer) {
+      handleConfirmSelection();
+    } 
+    // Otherwise, shuffle the cards
+    else {
       shuffleCards();
     }
   };
@@ -142,7 +150,9 @@ const SpinnerWheel = ({ players, onSelectPlayer, onHome }) => {
       {/* Header - Smaller on mobile */}
       <div className="text-center mb-6 md:mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-royal-light mb-2">Shuffle Cards</h2>
-        <p className="text-royal-muted text-sm md:text-base">Click the deck or button to shuffle</p>
+        <p className="text-royal-muted text-sm md:text-base">
+          {selectedPlayer ? 'Click the card or button to confirm' : 'Click the deck or button to shuffle'}
+        </p>
       </div>
 
       {/* Card Stack - Responsive sizing */}
@@ -173,7 +183,9 @@ const SpinnerWheel = ({ players, onSelectPlayer, onHome }) => {
           <div
             className={`absolute w-full h-full rounded-2xl border-2 border-blue-400 shadow-2xl transition-all duration-500 ${
               selectedPlayer ? 'scale-105' : 'hover:scale-105'
-            } ${isShuffling ? 'animate-bounce' : ''}`}
+            } ${isShuffling ? 'animate-bounce' : ''} ${
+              selectedPlayer ? 'cursor-pointer hover:border-green-400' : ''
+            }`}
             style={{
               zIndex: 20,
               backgroundColor: selectedPlayer ? '#334155' : '#1e293b',
@@ -189,7 +201,7 @@ const SpinnerWheel = ({ players, onSelectPlayer, onHome }) => {
                   {selectedPlayer.name}
                 </p>
                 <div className="mt-3 md:mt-4 text-base md:text-lg opacity-80 text-center">
-                  Click Confirm to continue
+                  Click to confirm selection
                 </div>
               </div>
             ) : (
@@ -213,6 +225,7 @@ const SpinnerWheel = ({ players, onSelectPlayer, onHome }) => {
         <p className="text-royal-muted text-xs md:text-sm mt-4 md:mt-6 text-center max-w-xs">
           {!isShuffling && !selectedPlayer ? 'Click the card deck or use the button below' : ''}
           {isShuffling ? 'Shuffling cards...' : ''}
+          {selectedPlayer && !isShuffling ? 'Click the card or button to confirm selection' : ''}
         </p>
       </div>
 
