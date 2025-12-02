@@ -26,7 +26,7 @@ const NameEntry = ({ players, onAddPlayer, onRemovePlayer, onStartGame, onClear,
       <div className="bg-royal-mid rounded-2xl p-8 w-full max-w-md shadow-2xl border border-royal-border animate-bounce-in">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-royal-light mb-3">Truth or Dare</h1>
-          <p className="text-royal-muted">Add players to start the game!</p>
+          <p className="text-royal-muted">Add players to start the game</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mb-6">
