@@ -43,6 +43,7 @@ function App() {
     setCurrentPage('task');
   };
 
+  console.log('heyyyyyyyyy rendered')
   const handleTaskComplete = (task) => {
     setUsedQuestions([...usedQuestions, task]);
     const updatedPlayers = players.filter((player) => player.id !== currentPlayer.id);
