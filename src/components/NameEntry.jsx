@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from './Layout/Button';
 import { Home, X } from 'lucide-react';
 
-const NameEntry = ({ players, onAddPlayer, onRemovePlayer, onStartGame, onClear, onHome }) => {
+const NameEntry = ({ players, onAddPlayer, onRemovePlayer, onStartGame, onClear, onHome, onAbout }) => {
   const [name, setName] = useState('');
 
   const handleSubmit = (e) => {
@@ -57,13 +57,13 @@ const NameEntry = ({ players, onAddPlayer, onRemovePlayer, onStartGame, onClear,
                   <span className="text-royal-light font-medium">
                     {index + 1}. {player.name}
                   </span>
-                 <button
+                  <button
                     onClick={() => onRemovePlayer(player.id)}
                     className="text-royal-muted hover:text-royal-light opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200 p-1 rounded hover:bg-royal-mid"
                     title="Remove player"
-                    >
-                     <X size={16} />
-                </button>
+                  >
+                    <X size={16} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -93,6 +93,13 @@ const NameEntry = ({ players, onAddPlayer, onRemovePlayer, onStartGame, onClear,
           >
             <Home size={14} className="inline-block mr-1" /> Home
           </Button>
+          <Button
+            onClick={onAbout}
+            variant="secondary"
+            className="text-royal-light border border-royal-light text-sm py-2 px-4 rounded-lg bg-transparent hover:bg-royal-mid hover:border-royal-accent transition-colors"
+          >
+            About
+          </Button>
         </div>
 
         {players.length === 1 && (
@@ -106,3 +113,4 @@ const NameEntry = ({ players, onAddPlayer, onRemovePlayer, onStartGame, onClear,
 };
 
 export default NameEntry;
+

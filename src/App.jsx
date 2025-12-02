@@ -6,6 +6,7 @@ import TruthDareSelection from './components/TruthDareSelection';
 import TaskDisplay from './components/TaskDisplay';
 import { Home } from 'lucide-react';
 import Button from './components/Layout/Button';
+import About from './components/About';
 
 function App() {
   const [players, setPlayers] = useLocalStorage('truthOrDarePlayers', []);
@@ -43,7 +44,6 @@ function App() {
     setCurrentPage('task');
   };
 
-  console.log('heyyyyyyyyy rendered')
   const handleTaskComplete = (task) => {
     setUsedQuestions([...usedQuestions, task]);
     const updatedPlayers = players.filter((player) => player.id !== currentPlayer.id);
@@ -61,6 +61,11 @@ function App() {
   const handleHome = () => {
     setCurrentPage('nameEntry');
   };
+
+  const handleAbout = () => {
+    setCurrentPage("about");
+  };
+
 
   const handleClear = () => {
     window.localStorage.removeItem('truthOrDarePlayers');
@@ -90,6 +95,7 @@ function App() {
             onStartGame={handleStartGame}
             onClear={handleClear}
             onHome={handleHome}
+            onAbout={handleAbout}
           />
         );
       case 'spinner':
@@ -117,9 +123,12 @@ function App() {
               <Button onClick={handleResetGame} variant="primary" className="w-full text-lg py-4">
                 Start New Game
               </Button>
+
             </div>
           </div>
         );
+      case "about":
+        return <About onHome={handleHome} />;
       default:
         return (
           <NameEntry
@@ -129,6 +138,7 @@ function App() {
             onStartGame={handleStartGame}
             onClear={handleClear}
             onHome={handleHome}
+            onAbout={handleAbout}
           />
         );
     }
