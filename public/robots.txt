@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://truth-or-dare-fa.vercel.app/sitemap.xml
