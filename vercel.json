@@ -1,4 +1,6 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "routes": [
     {
       "src": "/sitemap\\.xml",
@@ -13,10 +15,6 @@
       "headers": {
         "Content-Type": "text/plain"
       }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
     }
   ]
 }
