@@ -4,7 +4,7 @@ export const truthQuestions = [
   "What's your biggest fear?",
   "Who was your first crush?",
   "What's the weirdest habit you have?",
-  "Have you ever thought about killing someone? If yes, who and why?",
+  "Have you ever thought about k*lling someone? If yes, who and why?",
   "What's the most trouble you've ever been in?",
   "When was the last time you cried and why??",
   "What's something you're afraid to admit?",
